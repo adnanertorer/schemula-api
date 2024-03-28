@@ -46,13 +46,36 @@ const staffSchema = new Schema({
     birthday: {
         type: Date
     },
-    payment_type_name: {
+    payment_type_id: {
         type: String,
         required: [true, 'Lütfen maaş türünü seçiniz']
     },
-    staff_type_name: {
-        type: String,
-        required: [true, 'Lütfen çalışan türünü seçiniz']
+    payment_type : {
+        _id: {
+            type: String,
+        },
+        payment_type: {
+            type: String,
+            required: [true],
+            enum: ['Seans', 'Aylık']
+        },
+        is_active: {
+            type: Boolean,
+            default: true
+        },
+    },
+    staff_type: {
+        _id: {
+            type: String,
+        },
+        staff_type_name: {
+            type: String,
+            required: [true, 'Lütfen personel türünü yazınız']
+        },
+        is_active: {
+            type: Boolean,
+            default: true
+        },
     },
     is_active: {
         type: Boolean,
