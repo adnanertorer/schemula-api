@@ -22,6 +22,32 @@ const create = asyncErrorWrapper(async (req, res, next) => {
     });
 });
 
+const getList = asyncErrorWrapper(async (req, res, next) => {
+
+    var staffTypes = await StaffType.find({});
+
+    return res.status(200).
+    json({
+        success: true,
+        data: staffTypes,
+        message: 'Staff type list get successfully'
+    });
+});
+
+const getById = asyncErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+
+    var paymentType = await StaffType.findById(id);
+    return res.status(200).
+    json({
+        success: true,
+        data: paymentType,
+        message: 'StaffType get successfully'
+    });
+});
+
 module.exports = {
-    create
+    create,
+    getList,
+    getById
 };

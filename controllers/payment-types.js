@@ -22,6 +22,32 @@ const create = asyncErrorWrapper(async (req, res, next) => {
     });
 });
 
+const getList = asyncErrorWrapper(async (req, res, next) => {
+
+    var paymentTypes = await PaymentType.find({});
+
+    return res.status(200).
+    json({
+        success: true,
+        data: paymentTypes,
+        message: 'PaymentType list get successfully'
+    });
+});
+
+const getById = asyncErrorWrapper(async (req, res, next) => {
+    const { id } = req.params;
+
+    var paymentType = await PaymentType.findById(id);
+    return res.status(200).
+    json({
+        success: true,
+        data: paymentType,
+        message: 'PaymentType get successfully'
+    });
+});
+
 module.exports = {
-    create
+    create,
+    getList,
+    getById
 };
