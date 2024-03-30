@@ -53,7 +53,6 @@ const getList = asyncErrorWrapper(async (req, res, next) => {
 
 const getListByLesson = asyncErrorWrapper(async (req, res, next) => {
     const { id } = req.params;
-    console.log(id);
 
     var packageList = await LessonPackage.find({ company_id: req.user.company_id, lesson_id: id});
 

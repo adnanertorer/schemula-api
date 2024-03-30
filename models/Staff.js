@@ -64,6 +64,10 @@ const staffSchema = new Schema({
             default: true
         },
     },
+    staff_type_type_id: {
+        type: String,
+        required: [true, 'Lütfen personel tipini seçiniz']
+    },
     staff_type: {
         _id: {
             type: String,

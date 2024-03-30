@@ -22,8 +22,7 @@ const lessonPackageSchema = new Schema({
         },
         participant_type_name: {
             type: String,
-            required: [true],
-            enum: ['Yetişkin', 'Çocuk', 'Genel']
+            required: [true]
         },
         is_active: {
             type: Boolean,

@@ -18,7 +18,8 @@ const create = asyncErrorWrapper(async (req, res, next) => {
         is_active: data.is_active,
         payment_type: data.payment_type,
         payment_type_id: data.payment_type_id,
-        staff_type: data.staff_type
+        staff_type: data.staff_type,
+        staff_type_type_id: data.staff_type_type_id
     });
 
     return res.status(200).
@@ -53,8 +54,22 @@ const getById = asyncErrorWrapper(async (req, res, next) => {
     });
 });
 
+const remove = asyncErrorWrapper(async (req, res, next) => {
+    const { id } = req.query;
+
+    await Staff.deleteOne({ id: id });
+
+    return res.status(200).
+    json({
+        success: true,
+        data: {},
+        message: 'Staff delete successfully'
+    });
+});
+
 module.exports = {
     create,
     getList,
-    getById
+    getById,
+    remove
 };
